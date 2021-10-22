@@ -9,11 +9,6 @@ export const ProductList = () => {
   const products = useSelector((state) => state.products.products) || [];
   const dispatch = useDispatch();
   const getProducts = async () => {
-    const products = await axios
-      .get("https://fakestoreapi.com/products")
-      .catch((error) => {
-        console.log(error);
-      });
     dispatch(setProducts(products.data));
   };
 
@@ -41,6 +36,7 @@ export const ProductList = () => {
 
   return (
     <div className="products-list" >
+      <span>Product List</span>
       {renderProducts}
     </div>
   );

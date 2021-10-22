@@ -14,13 +14,9 @@ export const ProductDetails = () => {
 
 
  const product = useSelector(state=>state.products.selectedProduct);
-//  const {name,title,price} = product
 
-  const getProduct = async()=>{
-    const product =await axios.get(`https://fakestoreapi.com/products/${id}`).catch(error=>{
-      console.log(error);
-    });
-    dispatch(setSelectedProduct(product.data));
+  const getProduct = ()=>{
+    dispatch(setSelectedProduct(id));
   }
 
 useEffect(()=>{
@@ -35,7 +31,7 @@ const handleBackButton=()=> history.push("/");
  
   return (
     <div>
-     <div><FontAwesomeIcon icon={faArrowAltCircleLeft} /></div>
+     <div><FontAwesomeIcon onClick={handleBackButton} icon={faArrowAltCircleLeft} /></div>
       {product && <div className="card product-card">
         <div className="card-body">
           <h5 className="card-title">{product.name}</h5>
